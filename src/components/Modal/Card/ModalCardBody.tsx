@@ -1,7 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Bulma, withHelpersModifiers } from './../../../bulma';
+import * as Bulma from './../../../bulma';
+import { withHelpersModifiers } from './../../../bulma';
 
 export interface ModalCardBody<T> extends Bulma.Tag, React.HTMLProps<T> { }
 

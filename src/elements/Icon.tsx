@@ -1,8 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
+import * as Bulma from './../bulma';
 import {
-    Bulma,
     getSizeModifiers,
     isLeft, isRight,
     removeAlignmentProps, removeSizeProps,
@@ -23,7 +23,7 @@ export function Icon({children, ...props }: Icon<HTMLElement>) {
         {
             ...(isAlignOption(props.isAlign) ? { [`is-${props.isAlign}`]: true } : {}),
             ...getSizeModifiers(props),
-        }
+        },
     );
 
     const HTMLProps = getHTMLProps(props, removeAlignmentProps, removeSizeProps);
