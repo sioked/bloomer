@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Bulma, withHelpersModifiers } from './../../bulma';
+import * as Bulma from './../../bulma';
+import { withHelpersModifiers } from './../../bulma';
 
 export interface TabLink<T> extends Bulma.Render, Bulma.Tag,  React.HTMLProps<T> { }
 

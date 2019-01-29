@@ -1,8 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
+import * as Bulma from './../bulma';
 import {
-    Bulma,
     withHelpersModifiers,
 } from './../bulma';
 import { combineModifiers, getHTMLProps, is } from './../helpers';

@@ -1,7 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Bulma, getSizeModifiers, removeSizeProps, withHelpersModifiers } from './../bulma';
+import * as Bulma from './../bulma';
+import { getSizeModifiers, removeSizeProps, withHelpersModifiers } from './../bulma';
 import { getHTMLProps } from './../helpers';
 
 export interface Content<T> extends Bulma.Size, Bulma.Tag,  React.HTMLProps<T> { }

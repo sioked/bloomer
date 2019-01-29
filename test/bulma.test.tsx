@@ -1,18 +1,18 @@
+import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
 
 import * as Bulma from './../src/bulma';
 
 describe('removeProps functions', () => {
     const props = {
         href: '#',
-        onClick: f => f,
-    }
+        onClick: (f) => f,
+    };
 
     it('should remove Alignment props', () => {
         const aligmentProps = {
-            isAlign: 'left'
-        }
+            isAlign: 'left',
+        };
         expect(Bulma.removeAlignmentProps({ ...props, ...aligmentProps }))
             .toEqual(props);
     });
@@ -20,7 +20,7 @@ describe('removeProps functions', () => {
     it('should remove Size props', () => {
         const sizeProps: any = {
             isSize: 'large',
-        }
+        };
         expect(Bulma.removeSizeProps({ ...props, ...sizeProps }))
             .toEqual(props);
     });
@@ -30,7 +30,7 @@ describe('removeProps functions', () => {
             isActive: true,
             isHovered: true,
             isFocused: true,
-        }
+        };
         expect(Bulma.removeStateProps({ ...props, ...stateProps }))
             .toEqual(props);
     });
@@ -38,7 +38,7 @@ describe('removeProps functions', () => {
     it('should remove Active props', () => {
         const stateProps = {
             isActive: true,
-        }
+        };
         expect(Bulma.removeActiveModifiers({ ...props, ...stateProps }))
             .toEqual(props);
     });
@@ -46,7 +46,7 @@ describe('removeProps functions', () => {
     it('should remove Hovered props', () => {
         const stateProps = {
             isHovered: true,
-        }
+        };
         expect(Bulma.removeHoveredModifiers({ ...props, ...stateProps }))
             .toEqual(props);
     });
@@ -54,7 +54,7 @@ describe('removeProps functions', () => {
     it('should remove Focused props', () => {
         const stateProps = {
             isFocused: true,
-        }
+        };
         expect(Bulma.removeFocusedModifiers({ ...props, ...stateProps }))
             .toEqual(props);
     });
@@ -62,7 +62,7 @@ describe('removeProps functions', () => {
     it('should remove Color props', () => {
         const colorProps: any = {
             isColor: 'white',
-        }
+        };
         expect(Bulma.removeColorProps({ ...props, ...colorProps }))
             .toEqual(props);
     });
@@ -71,7 +71,7 @@ describe('removeProps functions', () => {
         const HeadingProps: Bulma.Bulma.Heading = {
             isSize: 2,
             isSpaced: true,
-        }
+        };
         expect(Bulma.removeHeadingProps({ ...props, ...HeadingProps }))
             .toEqual(props);
     });
@@ -81,10 +81,10 @@ describe('get*Modifiers functions', () => {
     it('should getAlignmentModifiers', () => {
         const props = {
             isAlign: 'left',
-        }
+        };
         const expected = {
             'is-left': true,
-        }
+        };
         expect(Bulma.getAlignmentModifiers(props))
             .toEqual(expected);
     });
@@ -92,10 +92,10 @@ describe('get*Modifiers functions', () => {
     it('should getSizeModifiers', () => {
         const props: any = {
             isSize: 'medium',
-        }
+        };
         const expected = {
             'is-medium': true,
-        }
+        };
         expect(Bulma.getSizeModifiers(props))
             .toEqual(expected);
     });
@@ -105,12 +105,12 @@ describe('get*Modifiers functions', () => {
             isActive: true,
             isFocused: true,
             isHovered: true,
-        }
+        };
         const expected = {
             'is-active': true,
             'is-focused': true,
             'is-hovered': true,
-        }
+        };
         expect(Bulma.getStateModifiers(props))
             .toEqual(expected);
     });
@@ -118,10 +118,10 @@ describe('get*Modifiers functions', () => {
     it('should getLoadingModifiers', () => {
         const props = {
             isLoading: true,
-        }
+        };
         const expected = {
             'is-loading': true,
-        }
+        };
         expect(Bulma.getLoadingModifiers(props))
             .toEqual(expected);
     });
@@ -129,10 +129,10 @@ describe('get*Modifiers functions', () => {
     it('should getColorModifiers', () => {
         const props: any = {
             isColor: 'success',
-        }
+        };
         const expected = {
             'is-success': true,
-        }
+        };
         expect(Bulma.getColorModifiers(props))
             .toEqual(expected);
     });
@@ -141,11 +141,11 @@ describe('get*Modifiers functions', () => {
         const props: any = {
             isSize: 1,
             isSpaced: true,
-        }
+        };
         const expected = {
             'is-1': true,
             'is-spaced': true,
-        }
+        };
         expect(Bulma.getHeadingModifiers(props))
             .toEqual(expected);
     });
@@ -156,8 +156,8 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
 
         expect(shallow(<WithHelpersModifiersComponent />).contains(<Component />)).toBe(true);
@@ -167,21 +167,21 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement> & Bulma.Bulma.Color> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isColor='black' className='custom' />
-        expect(shallow(renderedComponent).contains(<Component isColor='black' className='custom' />)).toBe(true);
+        const renderedComponent = <WithHelpersModifiersComponent isColor="black" className="custom" />;
+        expect(shallow(renderedComponent).contains(<Component isColor="black" className="custom" />)).toBe(true);
     });
 
     it('should render a Component with className from Helpers without passing Helpers Props', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement> & Bulma.Bulma.Modifiers> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isColor='black' isFullWidth className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isColor="black" isFullWidth className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isColor')).toBe('black');
@@ -194,10 +194,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay='flex' className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay="flex" className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -209,10 +209,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay={{flex: ['default', 'mobile']}} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay={{flex: ['default', 'mobile']}} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -225,10 +225,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay={{flex: 'default', block: ['default', 'tablet-only']}} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay={{flex: 'default', block: ['default', 'tablet-only']}} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -242,10 +242,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay={['block-mobile', 'flex-desktop-only', 'flex']} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay={['block-mobile', 'flex-desktop-only', 'flex']} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -259,12 +259,12 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
         const renderedComponent = <WithHelpersModifiersComponent isDisplay={
-            {flex: 'mobile', lol:false}
-        } className='custom' />
+            {flex: 'mobile', lol: false}
+        } className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -276,10 +276,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -291,10 +291,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden={['desktop-only', 'touch']} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden={['desktop-only', 'touch']} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -307,10 +307,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden={['desktop-only', 'lol']} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden={['desktop-only', 'lol']} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -322,10 +322,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden='mobile' className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden="mobile" className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -337,10 +337,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden='lol' className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden="lol" className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -351,10 +351,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isHidden={false} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isHidden={false} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isHidden')).toBe(undefined);
@@ -365,10 +365,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent: any = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay='none' className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay="none" className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isFlex')).toBe(undefined);
@@ -379,10 +379,10 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent: any = Bulma.withHelpersModifiers(Component);
-        const renderedComponent = <WithHelpersModifiersComponent isDisplay={1} className='custom' />
+        const renderedComponent = <WithHelpersModifiersComponent isDisplay={1} className="custom" />;
         const shallowedComponent = shallow(renderedComponent);
 
         expect(shallowedComponent.prop('isDisplay')).toBe(undefined);
@@ -393,26 +393,26 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent: any = Bulma.withHelpersModifiers(Component);
 
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextAlign='left' className='custom' />)
-                .hasClass('has-text-left')
+            shallow(<WithHelpersModifiersComponent hasTextAlign="left" className="custom" />)
+                .hasClass('has-text-left'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextAlign='centered' className='custom' />)
-                .hasClass('has-text-centered')
+            shallow(<WithHelpersModifiersComponent hasTextAlign="centered" className="custom" />)
+                .hasClass('has-text-centered'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextAlign='right' className='custom' />)
-                .hasClass('has-text-right')
+            shallow(<WithHelpersModifiersComponent hasTextAlign="right" className="custom" />)
+                .hasClass('has-text-right'),
         ).toBe(true);
 
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextAlign='right,left' className='custom' />)
-                .hasClass('has-text-right')
+            shallow(<WithHelpersModifiersComponent hasTextAlign="right,left" className="custom" />)
+                .hasClass('has-text-right'),
         ).toBe(false);
     });
 
@@ -420,46 +420,46 @@ describe('withHelpersModifiers', () => {
         const Component: React.SFC<React.HTMLProps<HTMLDivElement>> = (props) => {
             return (
                 <div>Hello World</div>
-            )
-        }
+            );
+        };
         const WithHelpersModifiersComponent = Bulma.withHelpersModifiers(Component);
 
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='white' className='custom' />)
-                .hasClass('has-text-white')
+            shallow(<WithHelpersModifiersComponent hasTextColor="white" className="custom" />)
+                .hasClass('has-text-white'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='light' className='custom' />)
-                .hasClass('has-text-light')
+            shallow(<WithHelpersModifiersComponent hasTextColor="light" className="custom" />)
+                .hasClass('has-text-light'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='dark' className='custom' />)
-                .hasClass('has-text-dark')
+            shallow(<WithHelpersModifiersComponent hasTextColor="dark" className="custom" />)
+                .hasClass('has-text-dark'),
         ).toBe(true);
 
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='black' className='custom' />)
-                .hasClass('has-text-black')
+            shallow(<WithHelpersModifiersComponent hasTextColor="black" className="custom" />)
+                .hasClass('has-text-black'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='primary' className='custom' />)
-                .hasClass('has-text-primary')
+            shallow(<WithHelpersModifiersComponent hasTextColor="primary" className="custom" />)
+                .hasClass('has-text-primary'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='info' className='custom' />)
-                .hasClass('has-text-info')
+            shallow(<WithHelpersModifiersComponent hasTextColor="info" className="custom" />)
+                .hasClass('has-text-info'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='success' className='custom' />)
-                .hasClass('has-text-success')
+            shallow(<WithHelpersModifiersComponent hasTextColor="success" className="custom" />)
+                .hasClass('has-text-success'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='warning' className='custom' />)
-                .hasClass('has-text-warning')
+            shallow(<WithHelpersModifiersComponent hasTextColor="warning" className="custom" />)
+                .hasClass('has-text-warning'),
         ).toBe(true);
         expect(
-            shallow(<WithHelpersModifiersComponent hasTextColor='danger' className='custom' />)
-                .hasClass('has-text-danger')
+            shallow(<WithHelpersModifiersComponent hasTextColor="danger" className="custom" />)
+                .hasClass('has-text-danger'),
         ).toBe(true);
     });
 });

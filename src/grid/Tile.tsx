@@ -1,9 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Bulma, withHelpersModifiers } from './../bulma';
+import * as Bulma from './../bulma';
+import { withHelpersModifiers } from './../bulma';
 import { getHTMLProps } from './../helpers';
-import { getGridSizesModifiers, Grid, removeGridSizesProps } from './grid';
+import * as Grid from './grid';
+import { getGridSizesModifiers, removeGridSizesProps } from './grid';
 
 export interface Tile<T> extends Bulma.Render, Bulma.Tag,
     React.HTMLProps<T> {

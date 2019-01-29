@@ -1,4 +1,4 @@
-import { Bulma } from './bulma';
+import * as Bulma from './bulma';
 
 export function getHTMLProps(props: object, ...args: Function[]): React.HTMLProps<HTMLElement> {
     return args.length > 0 ? args.reduce((rest, fn) => ({ ...fn(rest) }), props) : props;

@@ -1,7 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Bulma, getColorModifiers, removeColorProps,  withHelpersModifiers } from './../../bulma';
+import * as Bulma from './../../bulma';
+import { getColorModifiers, removeColorProps,  withHelpersModifiers } from './../../bulma';
 import { combineModifiers, getHTMLProps } from './../../helpers';
 
 export interface Message<T> extends Bulma.Color, Bulma.Tag, React.HTMLProps<T> { }

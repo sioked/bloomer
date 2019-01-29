@@ -1,11 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { Bulma, withHelpersModifiers } from './../bulma';
+import * as Bulma from './../bulma';
+import { withHelpersModifiers } from './../bulma';
 import { combineModifiers, getHTMLProps } from './../helpers';
+import * as Grid from './grid';
 import {
     getOffsetModifiers, getSizeModifiers,
-    Grid,
     removeOffsetProps, removeSizeProps,
 } from './grid';
 

@@ -1,6 +1,6 @@
 {
-  "name": "bloomer",
-  "version": "0.6.4",
+  "name": "@sioked/bloomer",
+  "version": "0.8.0",
   "description": "A set of React Components for Bulma CSS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
